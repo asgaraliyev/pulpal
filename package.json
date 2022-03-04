@@ -1,0 +1,22 @@
+{
+  "name": "pulpal",
+  "version": "1.0.0",
+  "description": "Pulpal api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asgaraliyev/pulpal.git"
+  },
+  "keywords": [
+    "pulpal"
+  ],
+  "author": "asgaraliyev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asgaraliyev/pulpal/issues"
+  },
+  "homepage": "https://github.com/asgaraliyev/pulpal#readme"
+}
