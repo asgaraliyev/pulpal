@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 class PulPal {
   mode = null; //DEV||PRODUCTION
   paymentURL = null; //""https://pay-dev.pulpal.az/payment""|| ""https://pay.pulpal.az/payment"";
@@ -44,7 +45,7 @@ class PulPal {
     let milliseconds = new Date().getTime();
 
     let fromEpoch = Math.floor(milliseconds / 300000);
-    joined += fromEpoch + salt;
+    joined += fromEpoch + this.salt;
     const hash = crypto.createHash("sha1").update(joined);
     return hash.digest("hex");
   }
@@ -54,14 +55,13 @@ class PulPal {
   createPaymentURL({
     price,
     externalId,
-    repeatable,
+    repeatable=false,
     name,
     description,
     lng = this.lng,
   }) {
     if (!price) return this.throwError("price field not found");
     else if (!externalId) return this.throwError("externalId field not found");
-    else if (!repeatable) return this.throwError("repeatable field not found");
     else if (!name) return this.throwError("name field not found");
     else if (!description)
       return this.throwError("description field not found");
@@ -86,3 +86,5 @@ class PulPal {
     )}`;
   }
 }
+
+export default PulPal
