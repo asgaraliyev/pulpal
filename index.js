@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+import crypto from "crypto";
 class PulPal {
   mode = null; //DEV||PRODUCTION
   paymentURL = null; //""https://pay-dev.pulpal.az/payment""|| ""https://pay.pulpal.az/payment"";
@@ -8,13 +8,8 @@ class PulPal {
         ${message}
     `);
   }
-  constructor({
-    mode = "DEV",
-    defaultLng = "en",
-    salt,
-    merchantId,
-    customMerchantName,
-  }) {
+  constructor({ mode = "DEV", defaultLng = "en", ...rest }) {
+    const { salt, merchantId, customMerchantName } = rest[mode];
     this.salt = salt;
     this.merchantId = merchantId;
     this.customMerchantName = customMerchantName;
@@ -55,7 +50,7 @@ class PulPal {
   createPaymentURL({
     price,
     externalId,
-    repeatable=false,
+    repeatable = false,
     name,
     description,
     lng = this.lng,
@@ -87,4 +82,4 @@ class PulPal {
   }
 }
 
-export default PulPal
+export default PulPal;
